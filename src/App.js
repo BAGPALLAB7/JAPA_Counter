@@ -10,35 +10,35 @@ function App() {
   useEffect(() => {
     const localCount = JSON.parse(localStorage.getItem("japaCount"));
     if (localCount) {
-      console.log("storedCount : ", localCount);
+      //console.log("storedCount : ", localCount);
       setCount(localCount);
     } else {
-      console.log("localCount not found");
+      //console.log("localCount not found");
       localStorage.setItem("japaCount", JSON.stringify(count));
     }
 
     const localMalaCount = JSON.parse(localStorage.getItem("malaCount"));
     if (localMalaCount) {
-      console.log("local malaCount",localMalaCount);
+      //console.log("local malaCount",localMalaCount);
       setMalaCount(localMalaCount);
     } else {
-      console.log("local mala count not found");
+      //console.log("local mala count not found");
       localStorage.setItem("malaCount", JSON.stringify(malaCount));
     }
     const isDark = JSON.parse(localStorage.getItem("dark"));
     if (isDark) {
-      console.log("isdark", isDark);
+      //console.log("isdark", isDark);
       setDark(isDark);
     } else {
-      console.log("dark not found");
+      //console.log("dark not found");
       localStorage.setItem("dark", JSON.stringify(dark));
     }
   }, []);
 
   useEffect(() => {
     if (count !== 0 && count % 108 === 0) {
+      vibrate(2000);
       audio.play();
-      vibrate(1000);
       localStorage.setItem("malaCount", JSON.stringify(malaCount + 1));
       setMalaCount((prev) => prev + 1);
       setCount(0);
@@ -59,12 +59,12 @@ function App() {
     }
   };
   const increase = () => {
-    vibrate(10)
+    vibrate(50)
     localStorage.setItem("japaCount", JSON.stringify(count + 1));
     setCount((prev) => prev + 1);
   };
   const decrease = () => {
-    vibrate(10)
+    vibrate(50)
     localStorage.setItem("japaCount", JSON.stringify(count - 1));
     setCount((prev) => prev - 1);
   };
@@ -84,7 +84,7 @@ function App() {
     <div
       className={
         dark
-          ? "bg-gray-700 w-screen h-screen flex flex-col justify-center items-center"
+          ? "bg-gray-700 w-screen h-dvh flex flex-col justify-center items-center"
           : "w-screen h-screen flex flex-col justify-center items-center bg-gradient-to-b from-yellow-50 to-yellow-300"
       }
     >
