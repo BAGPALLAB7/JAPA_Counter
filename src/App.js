@@ -36,12 +36,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (count !== 0 && count % 108 === 0) {
+    if (count !== 0 && count % 108 === 0 ) {
       vibrate(2000);
       audio.play();
       localStorage.setItem("malaCount", JSON.stringify(malaCount + 1));
       setMalaCount((prev) => prev + 1);
       setCount(0);
+      localStorage.setItem("japaCount", JSON.stringify(0));
     } else if (count !== 0 && count % 10 === 0) {
       vibrate(100);
     }
